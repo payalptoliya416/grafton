@@ -233,7 +233,7 @@ body {
 
 .hero-section {
   width: 100%;
-  padding: 0 0 clamp(24px, 4vw, 60px);
+  padding:60px 20px 10px;
   background: #ffffff;
 }
 
@@ -245,7 +245,7 @@ body {
 .hero-frame-inner {
   border: none;
   margin: 0;
-  padding: clamp(18px, 3vw, 32px) clamp(20px, 5vw, 60px);
+  padding: clamp(26px, 4vw, 72px) clamp(27px, 5vw, 60px);
   position: relative;
   overflow: hidden;
   background: #ffffff;
@@ -261,7 +261,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(6px, 1vw, 16px);
+  gap: clamp(6px, 6vw, 34px);
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -269,26 +269,26 @@ body {
 .hero-cans-side {
   display: flex;
   align-items: center;
-  gap: clamp(-14px, -1vw, -4px);
+  gap: 40px;
 }
 
 .hero-can {
   display: block;
-  width: clamp(58px, 10.4vw, 128px);
+  width: clamp(58px, 10.4vw, 110px);
   height: auto;
   filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.16));
 }
 
 .hero-can-outer {
-  transform: translateY(clamp(-52px, -4.6vw, -30px));
+  transform: translateY(clamp(-110px, -4.6vw, -130px)) !important;
 }
 
 .hero-can-mid {
-  transform: translateY(clamp(-24px, -2.2vw, -12px));
+  transform: translateY(clamp(-18px, -2.2vw, -12px)) !important;
 }
 
 .hero-can-inner {
-  transform: translateY(clamp(10px, 1.4vw, 20px));
+  transform: translateY(clamp(34px, 1.4vw, 20px)) !important;
 }
 
 .hero-logo-wrap {
@@ -300,7 +300,6 @@ body {
 
 .hero-logo-img {
   display: block;
-  width: clamp(150px, 15.5vw, 260px);
   height: auto;
 }
 
@@ -320,6 +319,11 @@ body {
   .hero-can-inner {
     transform: none;
   }
+  .hero-logo-img {
+    display: block;
+    width: clamp(200px, 21.5vw, 255px);
+    height: auto;
+}
 }
 
 .hero-col-left {
@@ -489,6 +493,180 @@ body {
     display: none;
   }
 }
+.beer-heading-section .container{
+    position: relative;
+    padding: 60px 20px;
+    text-align: center;
+    overflow: hidden;
+
+    /* Background Image */
+    background: url('../assets/images/bg-grain.png') center center no-repeat;
+    background-size: auto;
+}
+
+.beer-title-wrapper{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+}
+
+.beer-title{
+    font-family: 'Cream Cake', cursive;
+    font-size: 60px;
+    line-height: 1;
+    color: #000;
+    margin: 0;
+    font-weight: 400;
+}
+
+.beer-side-icon {
+    width: 60px;
+    height: auto;
+    flex-shrink: 0;
+    margin-top: -36px;
+}
+
+@media(max-width:768px){
+
+    .beer-title-wrapper{
+        gap: 12px;
+    }
+
+    .beer-side-icon{
+        width: 35px;
+    }
+
+    .beer-heading-section{
+        padding: 40px 15px;
+    }
+}
+
+@media(max-width:576px){
+
+    .beer-title{
+        font-size: 34px;
+    }
+
+    .beer-side-icon{
+        width: 28px;
+    }
+}
+
+
+/* ==========================================================================
+   Experience section — beer cards with hover-to-video
+   ========================================================================== */
+
+.experience-section {
+  width: 100%;
+  padding: clamp(50px, 8vw, 100px) 5% clamp(60px, 9vw, 110px);
+  text-align: center;
+  background: #ffffff;
+}
+
+.experience-script {
+    font-family: 'Cream Cake', cursive;
+    font-size: 32px;
+    color: #000000;
+    font-weight: bold;
+    margin: -10px;
+}
+
+.experience-heading {
+  align-items: baseline;
+  /* justify-content: center;  */
+  gap: clamp(10px, 1.6vw, 20px);
+  flex-wrap: wrap;
+  margin: 0 0 clamp(20px, 6vw, 10px);
+}
+
+.experience-stamp {
+  font-family: 'Dabre Grunge';
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 80px;
+  color: #000000;
+  margin-right: 17px;
+}
+
+.experience-brand {
+  position: relative;
+  display: inline-block;
+  font-family: 'Dabre Grunge';
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 80px;
+  color: #000000;
+  text-align: left;
+  z-index: 999;
+}
+
+.experience-underline {
+    width: 100%;
+    bottom: 20%;
+    z-index: -1;
+    position: absolute;
+    display: block;
+    margin-left: -10px;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2.5vw, 40px);
+  margin: 0 auto;
+}
+
+.beer-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 848 / 915;
+  cursor: pointer;
+}
+
+.beer-card-img,
+.beer-card-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.beer-card-video {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.beer-card:hover .beer-card-video {
+  opacity: 1;
+}
+@media (max-width: 991px) {
+ .experience-stamp, .experience-brand {
+    font-size: 60px;
+}
+}
+@media (max-width: 767.98px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+   .experience-stamp, .experience-brand {
+    font-size: 35px;
+}
+.experience-script {
+    font-family: 'Cream Cake', cursive;
+    font-size: 26px;
+    line-height: 29px;
+    color: #000000;
+    font-weight: bold;
+    margin: 0px;
+}
+}
+
 
 /* ==========================================================================
    Pour section — sticky pinned image, staged scroll reveal
@@ -516,12 +694,6 @@ body {
   inset: 0;
   background-size: cover;
   background-position: center;
-}
-
-.pour-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
 }
 
 .pour-content {
@@ -554,10 +726,16 @@ body {
 }
 
 .pour-underline {
-  display: block;
-  width: clamp(280px, 45vw, 560px);
-  margin: -0.35em auto 0;
-  transform-origin: left center;
+    /* display: block; */
+    position: absolute;
+    width: auto;
+    margin: auto;
+    transform-origin: left center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 8px;
+    z-index: -2;
 }
 
 .pour-cta {
@@ -567,8 +745,7 @@ body {
   color: #FFFFFF;
   text-decoration: none;
   text-transform: uppercase;
-  /* font-family: 'Hubot Sans', sans-serif; */
-  font-weight: 400;
+  font-weight: 300;
   font-size: 20px;
   letter-spacing: 1px;
   padding: 14px 30px;
@@ -576,99 +753,463 @@ body {
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
   transition: background 0.2s ease, transform 0.2s ease;
 }
-
+.pour-overlay
 .pour-cta:hover {
   background: #ffffff;
   /* transform: translateY(-2px); */
   color: #a4002a;
 }
+@media (max-width: 600px) {
+  .pour-heading-text{
+    font-size: 30px;
+  }
+  .pour-underline {
+    width: 81%;
+    bottom: 3px;
+}
+}
+
 
 /* ==========================================================================
-   Experience section — beer cards with hover-to-video
+   Heritage section
    ========================================================================== */
 
-.experience-section {
-  width: 100%;
-  padding: clamp(50px, 8vw, 100px) 5% clamp(60px, 9vw, 110px);
-  text-align: center;
-  background: #ffffff;
+.heritage-section{
+    padding:80px 0;
+    background:#fff;
+    overflow:hidden;
 }
 
-.experience-script {
-  font-family: 'Cream Cake', cursive;
-  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
-  color: #1a1a1a;
-  margin: 0 0 6px;
+.heritage-wrapper{
+    display:flex;
+    gap: 0;
+    align-items:stretch;
+    min-height:560px;
+    position:relative;
 }
 
-.experience-heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: clamp(10px, 1.6vw, 20px);
-  flex-wrap: wrap;
-  margin: 0 0 clamp(36px, 6vw, 64px);
+/* LEFT IMAGE */
+
+.heritage-image{
+    width:60%;
+    position:relative;
 }
 
-.experience-stamp {
-  font-size: clamp(2rem, 4.2vw, 3.4rem);
+.heritage-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
-.experience-brand {
-  position: relative;
-  display: inline-block;
-  font-family: 'Hubot Sans', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: clamp(2rem, 4.2vw, 3.4rem);
-  color: #6e1220;
+/* RIGHT PANEL */
+
+
+.heritage-content {
+    width: 60%;
+    position: relative;
+    background-image:url('../assets/images/Mask\ group\ \(7\).png');
+    background-size: 102% 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    display: flex;
+    align-items: center;
+    margin-left: -200px;
+    padding-left: 80px;
+}
+.heritage-inner{
+    /* max-width:560px; */
+    padding:80px 70px;
 }
 
-.experience-underline {
-  display: block;
-  width: 100%;
-  margin-top: -0.25em;
+/* SCRIPT FONT */
+
+.heritage-subtitle{
+    display:block;
+    font-family:'Cream Cake', cursive;
+    font-size:32px;
+    color:#fff;
+    margin-bottom:5px;
+    line-height:1;
 }
 
-.experience-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(16px, 2.5vw, 32px);
-  max-width: 1200px;
-  margin: 0 auto;
+/* MAIN TITLE */
+
+.heritage-title{
+    font-family: 'Dabre Grunge';
+    font-size:72px;
+    line-height:0.95;
+    color:#fff;
+    margin:0;
+    text-transform:uppercase;
+    position: relative;
+    display: inline;
+    z-index: 999;
 }
 
-.beer-card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 4px;
-  aspect-ratio: 848 / 915;
-  cursor: pointer;
+/* YELLOW LINE */
+
+.heritage-line{
+    width:180px;
+    height:6px;
+    background:#d6a400;
+    margin:18px 0 35px auto;
+}
+.experience-underline-yellow {
+    width: 54%;
+    bottom: 14%;
+    z-index: 999;
+    position: absolute;
+    display: block;
+    right: -28px;
+    z-index: -1;
+}
+/* BODY */
+
+.heritage-text{
+        font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    line-height: 43px;
+    color: #fff;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 0;
+    letter-spacing: 1px;
+    max-width: 650px;
+    margin-top: 20px;
 }
 
-.beer-card-img,
-.beer-card-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* TABLET */
+
+@media(max-width:1200px){
+
+    .heritage-title{
+        font-size:58px;
+    }
+
+    .heritage-text{
+        font-size:18px;
+    }
+
+    .heritage-inner{
+        padding:60px 50px;
+    }
 }
 
-.beer-card-video {
-  opacity: 0;
-  transition: opacity 0.4s ease;
+/* MOBILE */
+
+@media(max-width:991px){
+.heritage-content {
+    width: 60%;
+    position: relative;
+    background-image: url('../assets/images/bg-heritage-mobile.png');
+    background-size: 102% 100%;
+    background-repeat: no-repeat;
+    background-position: left center;
+    display: flex;
+    align-items: center;
+    margin-left: -200px;
+    padding-left: 80px;
+}
+    .heritage-wrapper{
+        flex-direction:column;
+    }
+
+    .heritage-image,
+    .heritage-content{
+        width:100%;
+    }
+
+    .heritage-image{
+        height:400px;
+    }
+
+    .heritage-content{
+        background-size:cover;
+        background-position:center;
+        margin-left: 0px;
+        padding-left: 0;
+        justify-content: center;
+    }
+
+    .heritage-inner{
+        padding:100px 30px;
+        text-align:center;
+        max-width: 500px;
+    }
+
+    .heritage-subtitle{
+        font-size:34px;
+    }
+
+    .heritage-title{
+        font-size:42px;
+    }
+
+    .heritage-line{
+        margin:20px auto 30px;
+    }
+
+    .heritage-text{
+        font-size:16px;
+        line-height:1.7;
+    }
+
 }
 
-.beer-card:hover .beer-card-video {
-  opacity: 1;
+@media(max-width:576px){
+
+    .heritage-image{
+        height:280px;
+    }
+
+    .heritage-subtitle{
+        font-size:28px;
+    }
+
+    .heritage-title{
+        font-size:34px;
+    }
+
+    .heritage-text{
+        font-size:15px;
+    }
+     .heritage-inner{
+        padding:60px 30px;
+        text-align:center;
+    }
 }
 
-@media (max-width: 767.98px) {
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
+
+/* =========================
+   GRAFTON BEER SLIDER
+========================= */
+
+.grafton-slider-section{
+    position: relative;
+    padding: 80px 0;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.grafton-swiper{
+    position: relative;
+    padding: 0 70px;
+}
+
+/* Slide */
+
+.grafton-swiper .swiper-slide{
+    height: auto;
+}
+
+/* Card */
+
+.grafton-product-card{
+    text-align: center;
+}
+
+.grafton-can-image{
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grafton-can-image img{
+    max-height: 100%;
+    width: auto;
+   animation:graftonFloat 4s ease-in-out infinite;
+}
+@keyframes graftonFloat{
+    0%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-12px);
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
+.grafton-product-card:hover .grafton-can-image img{
+    transform:translateY(-18px) scale(1.05);
+}
+/* .grafton-swiper .swiper-slide{
+    opacity:.5;
+    transition:.5s ease;
+} */
+.grafton-swiper{
+    overflow:hidden;
+}
+
+.grafton-swiper .swiper-slide-active,
+.grafton-swiper .swiper-slide-next,
+.grafton-swiper .swiper-slide-prev{
+    opacity:1;
+}
+.grafton-view-all-btn{
+    animation:pulseBeer 2.5s infinite;
+}
+
+@keyframes pulseBeer{
+    0%{
+        box-shadow:0 0 0 0 rgba(240,179,16,.5);
+    }
+
+    70%{
+        box-shadow:0 0 0 15px rgba(240,179,16,0);
+    }
+
+    100%{
+        box-shadow:0 0 0 0 rgba(240,179,16,0);
+    }
+}
+
+/* Title */
+
+.grafton-product-title{
+    font-size: 26px;
+    line-height: 36px;
+    color: #000000;
+    margin: 20px 0 12px;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+/* ABV */
+
+.grafton-product-abv{
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    color: #000000;
+    font-weight: 300;
+}
+
+/* Navigation */
+
+.grafton-slider-prev,
+.grafton-slider-next{
+    width: 56px;
+    height: 56px;
+    background: #a4002a;
+    border-radius: 50%;
+    position: absolute;
+    top: 34%;
+    transform: translateY(-50%);
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.grafton-slider-prev{
+    left: 0;
+}
+
+.grafton-slider-next{
+    right: 0;
+}
+
+.grafton-slider-prev i,
+.grafton-slider-next i{
+    color: #fff;
+    font-size: 18px;
+}
+
+.grafton-slider-prev:hover,
+.grafton-slider-next:hover{
+    background: #850021;
+}
+
+/* Button */
+
+.grafton-view-all-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0b310;
+    border-radius: 50px;
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    letter-spacing: .5px;
+    transition: all .3s ease;
+        padding: 12px 30px;
+}
+
+.grafton-view-all-btn:hover{
+    background: #d89d07;
+    color: #000;
+}
+
+/* Tablet */
+
+@media (max-width: 991px){
+
+    .grafton-slider-section{
+        padding: 60px 0;
+    }
+
+    .grafton-swiper{
+        padding: 0 50px;
+    }
+
+    .grafton-can-image{
+        height: 260px;
+    }
+
+    .grafton-product-title{
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .grafton-product-abv{
+        font-size: 18px;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 767px){
+
+    .grafton-swiper{
+        padding: 0 40px;
+    }
+
+    .grafton-can-image{
+        height: 220px;
+    }
+
+    .grafton-product-title{
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .grafton-product-abv{
+        font-size: 16px;
+    }
+
+    .grafton-slider-prev,
+    .grafton-slider-next{
+        width: 42px;
+        height: 42px;
+    }
+
+    .grafton-slider-prev i,
+    .grafton-slider-next i{
+        font-size: 14px;
+    }
+
+    .grafton-view-all-btn{
+        min-width: 160px;
+        height: 50px;
+        font-size: 20px;
+    }
 }
 
 
@@ -677,12 +1218,19 @@ body {
 
 
 
-.placeholder-section {
+
+
+
+
+
+
+/* .placeholder-section {
   min-height: 130vh;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #888;
   font-family: 'Hubot Sans', sans-serif;
-}
+} */
+
 

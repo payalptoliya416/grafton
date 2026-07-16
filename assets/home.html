@@ -14,6 +14,10 @@
 <!-- Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/cream-cake" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 
 <link rel="stylesheet" href="main.css">
 </head>
@@ -70,7 +74,7 @@
         <div class="swiper-slide">
           <div class="hero-frame-inner hero-cans-layout">
 
-            <div class="hero-cans-side hero-cans-left">
+            <div class="hero-cans-side hero-cans-left"  data-aos="fade-left">
               <img src="images/can-ipa.png" class="hero-can hero-can-outer" alt="Grafton Big River IPA">
               <img src="images/can-old.png" class="hero-can hero-can-mid" alt="Grafton Brewhouse Old">
               <img src="images/can-lager.png" class="hero-can hero-can-inner" alt="Grafton Brick Tower Lager">
@@ -80,7 +84,7 @@
               <img src="images/grafton-wordmark.png" class="hero-logo-img" alt="Grafton Heritage Brewing Co.">
             </div>
 
-            <div class="hero-cans-side hero-cans-right">
+            <div class="hero-cans-side hero-cans-right" data-aos="fade-right">
               <img src="images/can-special.png" class="hero-can hero-can-inner" alt="Grafton Celebration Special">
               <img src="images/can-paleale.png" class="hero-can hero-can-mid" alt="Grafton Somervale Pale Ale">
               <img src="images/can-pilsener.png" class="hero-can hero-can-outer" alt="Grafton Export Pilsener">
@@ -110,7 +114,7 @@
             </div>
 
           </div>
-          
+
         </div>
 
         <!-- TODO: placeholder slide — swap in real copy/imagery -->
@@ -143,11 +147,67 @@
   </div>
 </section>
 
-<section class="pour-section">
+<!-- Flavour section start -->
+<section class="beer-heading-section container" data-aos="fade-up" data-aos-duration="2000" style="overflow-x: hidden;">
+
+    <div class="container">
+
+        <div class="beer-title-wrapper">
+
+            <!-- Left Icon -->
+            <img src="../assets/images/Mask group (6).png"
+                 alt="Decoration"
+                 class="beer-side-icon">
+
+            <h2 class="beer-title">
+                Beer With Flavour In Its Favour
+            </h2>
+
+            <!-- Right Icon -->
+            <img src="../assets/images/Mask group (5).png"
+                 alt="Decoration"
+                 class="beer-side-icon">
+
+        </div>
+
+    </div>
+
+</section>
+<!-- Flavour section end -->
+
+<section class="experience-section container" style="overflow-x: hidden;">
+  
+  <div data-aos="fade-up" data-aos-duration="1000">
+    <p class="experience-script">Good Beer, Great Music, Memorable Moments.</p>
+    <h2 class="experience-heading">
+      <span class="stamp experience-stamp">Experience</span>
+      <span class="experience-brand">
+        Grafton
+        <img src="images/heading-underline.png" class="experience-underline" alt="">
+      </span>
+    </h2>
+  </div>
+
+  <div class="experience-grid" data-aos="fade-up" data-aos-duration="1000">
+    <div class="beer-card" data-aos="fade-right" data-aos-duration="1000">
+      <img src="images/card-bostock-stout.png" class="beer-card-img" alt="Bostock Stout">
+      <video class="beer-card-video" muted loop playsinline preload="none"
+             src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+    </div>
+    <div class="beer-card" data-aos="fade-left" data-aos-duration="2000">
+      <img src="images/card-japanese-lager.png" class="beer-card-img" alt="Japanese Lager">
+      <video class="beer-card-video" muted loop playsinline preload="none"
+             src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+    </div>
+  </div>
+</section>
+
+
+<section class="pour-section" data-aos="zoom-in-up">
   <div class="pour-sticky-wrap">
     <div class="pour-media">
       <div class="pour-bg" style="background-image:url('images/beer-pour-bg.png');"></div>
-      <div class="pour-overlay"></div>
+      
     </div>
     <div class="pour-content">
       <h2 class="pour-heading">
@@ -159,33 +219,239 @@
   </div>
 </section>
 
-<section class="experience-section">
-  <p class="experience-script">Good Beer, Great Music, Memorable Moments.</p>
-  <h2 class="experience-heading">
-    <span class="stamp experience-stamp">Experience</span>
-    <span class="experience-brand">
-      Grafton
-      <img src="images/heading-underline.png" class="experience-underline" alt="">
-    </span>
-  </h2>
 
-  <div class="experience-grid">
-    <div class="beer-card">
-      <img src="images/card-bostock-stout.png" class="beer-card-img" alt="Bostock Stout">
-      <video class="beer-card-video" muted loop playsinline preload="none"
-             src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+<section class="heritage-section">
+    <div class="container-fluid px-0">
+        <div class="heritage-wrapper">
+
+            <!-- Left Image -->
+            <div class="heritage-image">
+                <img src="../assets/images/image 32.png" alt="">
+            </div>
+
+            <!-- Right Content -->
+            <div class="heritage-content" >
+
+                <div class="heritage-inner" data-aos="zoom-in-left">
+
+                    <span class="heritage-subtitle">
+                        Where Our Story First Began
+                    </span>
+
+                    <h2 class="heritage-title">
+                        PRIDE OF THE NORTH
+                        <img src="../assets/images/yellow-linee.png" class="experience-underline-yellow" alt="">
+                    </h2>
+
+                    <!-- <div class="heritage-line"></div> -->
+                     
+
+                    <p class="heritage-text">
+                        THE GRAFTON BREWING COMPANY WAS ESTABLISHED IN 1952,
+                        AND TODAY THE ICONIC SITE AND ITS BUILDINGS HAVE BEEN
+                        GIVEN A NEW LEASE OF LIFE AS THE GRAFTON HERITAGE
+                        BREWING CO.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
     </div>
-    <div class="beer-card">
-      <img src="images/card-japanese-lager.png" class="beer-card-img" alt="Japanese Lager">
-      <video class="beer-card-video" muted loop playsinline preload="none"
-             src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
-    </div>
+</section>
+
+
+<!-- Bees Slider Section Start -->
+<section class="container">
+  <div data-aos="fade-up" data-aos-duration="1000" style="text-align: center;">
+    <p class="experience-script">Crafted for Every Occasion</p>
+    <h2 class="experience-heading">
+      <span class="stamp experience-stamp">Beer with</span>
+      <span class="experience-brand">
+        Flavour
+        <img src="images/heading-underline.png" class="experience-underline" alt="">
+      </span>
+       <span class="stamp experience-stamp" style="margin-left: 20px;">In Its Favour</span>
+    </h2>
   </div>
+
+ <div class="swiper grafton-swiper">
+
+            <div class="swiper-wrapper">
+
+                <!-- Item 1 -->
+                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
+                    <div class="grafton-product-card">
+
+                        <div class="grafton-can-image">
+                            <img src="images/crafton-1.png" alt="Brick Tower Lager">
+                        </div>
+
+                        <h3 class="grafton-product-title">
+                            BRICK TOWER <br>
+                            LAGER
+                        </h3>
+
+                        <div class="grafton-product-abv">
+                            4.5% ABV
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="swiper-slide">
+                    <div class="grafton-product-card">
+
+                        <div class="grafton-can-image">
+                            <img src="images/crafton-2.png" alt="Big River IPA">
+                        </div>
+
+                        <h3 class="grafton-product-title">
+                            BIG RIVER <br>
+                            IPA
+                        </h3>
+
+                        <div class="grafton-product-abv">
+                            6.2% ABV
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="swiper-slide">
+                    <div class="grafton-product-card">
+
+                        <div class="grafton-can-image">
+                            <img src="images/crafton-3.png" alt="Brewhouse Pale Ale">
+                        </div>
+
+                        <h3 class="grafton-product-title">
+                            BREWHOUSE <br>
+                            PALE ALE
+                        </h3>
+
+                        <div class="grafton-product-abv">
+                            5.1% ABV
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="swiper-slide">
+                    <div class="grafton-product-card">
+
+                        <div class="grafton-can-image">
+                            <img src="images/crafton-4.png" alt="Southern Draught">
+                        </div>
+
+                        <h3 class="grafton-product-title">
+                            SOUTHERN <br>
+                            DRAUGHT
+                        </h3>
+
+                        <div class="grafton-product-abv">
+                            4.8% ABV
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="swiper-slide">
+                    <div class="grafton-product-card">
+
+                        <div class="grafton-can-image">
+                            <img src="images/crafton-5.png" alt="Limited Release Hazy Ale">
+                        </div>
+
+                        <h3 class="grafton-product-title">
+                            LIMITED RELEASE <br>
+                            HAZY ALE
+                        </h3>
+
+                        <div class="grafton-product-abv">
+                            5.6% ABV
+                        </div>
+
+                    </div>
+                </div>
+                 <!-- Item 5 -->
+                <div class="swiper-slide">
+                    <div class="grafton-product-card">
+
+                        <div class="grafton-can-image">
+                            <img src="images/crafton-5.png" alt="Limited Release Hazy Ale">
+                        </div>
+
+                        <h3 class="grafton-product-title">
+                            LIMITED RELEASE <br>
+                            HAZY ALE
+                        </h3>
+
+                        <div class="grafton-product-abv">
+                            5.6% ABV
+                        </div>
+
+                    </div>
+                </div>
+                 <!-- Item 5 -->
+                <div class="swiper-slide">
+                    <div class="grafton-product-card">
+
+                        <div class="grafton-can-image">
+                            <img src="images/crafton-5.png" alt="Limited Release Hazy Ale">
+                        </div>
+
+                        <h3 class="grafton-product-title">
+                            LIMITED RELEASE <br>
+                            HAZY ALE
+                        </h3>
+
+                        <div class="grafton-product-abv">
+                            5.6% ABV
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Navigation -->
+
+            <div class="grafton-slider-prev">
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+
+            <div class="grafton-slider-next">
+                <i class="fa-solid fa-arrow-right"></i>
+            </div>
+
+        </div>
+
+        <!-- Button -->
+
+        <div class="text-center mt-5">
+            <a href="#" class="grafton-view-all-btn">
+                VIEW ALL BEERS
+            </a>
+        </div>
+
+
+
+
+  
 </section>
 
-<section class="placeholder-section">
+<!-- Bees Slider Section End -->
+
+
+<!-- <section class="placeholder-section">
   <p>Next section placeholder — scroll here to preview the hero's exit animation.</p>
-</section>
+</section> -->
 
 </main>
 
@@ -195,5 +461,10 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
 <script src="main.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 </body>
 </html>
