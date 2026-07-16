@@ -147,11 +147,10 @@ new Swiper(".grafton-swiper", {
     }
 });
 
-
 new Swiper(".exploreSwiper", {
 
-    slidesPerView: "auto",
-    spaceBetween: 18,
+    slidesPerView: 3,
+    spaceBetween: 24,
 
     navigation: {
         nextEl: ".explore-next",
