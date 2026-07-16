@@ -57,26 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Scroll-out 3D tilt — matches the reference site's hero exactly:
-     rotateX 0 -> -30deg, y 0 -> -210px, linear scrub, perspective 1400px */
-
-  if (typeof ScrollTrigger !== 'undefined') {
-    gsap.fromTo('.hero-frame',
-      { transformPerspective: 1400, y: 0, rotationX: 0 },
-      {
-        y: -210,
-        rotationX: -30,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: '.hero-section',
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true
-        }
-      }
-    );
-  }
-
   /* Pour section — sticky pinned background, staged scroll reveal:
      scroll stage 1 brings the heading + underline in, scroll stage 2 brings the button in.
      Same mechanism as the reference site's sticky-image section: pinned via a taller
@@ -167,3 +147,29 @@ new Swiper(".grafton-swiper", {
     }
 });
 
+
+new Swiper(".exploreSwiper", {
+
+    slidesPerView: "auto",
+    spaceBetween: 18,
+
+    navigation: {
+        nextEl: ".explore-next",
+        prevEl: ".explore-prev",
+    },
+
+    breakpoints: {
+
+        0: {
+            slidesPerView: 1
+        },
+
+        768: {
+            slidesPerView: 2
+        },
+
+        1200: {
+            slidesPerView: 3
+        }
+    }
+});

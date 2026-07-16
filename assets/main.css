@@ -992,9 +992,13 @@ body {
     overflow: hidden;
 }
 
-.grafton-swiper{
+.grafton-swiper-outer{
     position: relative;
     padding: 0 70px;
+}
+
+.grafton-swiper{
+    overflow: hidden;
 }
 
 /* Slide */
@@ -1155,7 +1159,7 @@ body {
         padding: 60px 0;
     }
 
-    .grafton-swiper{
+    .grafton-swiper-outer{
         padding: 0 50px;
     }
 
@@ -1177,7 +1181,7 @@ body {
 
 @media (max-width: 767px){
 
-    .grafton-swiper{
+    .grafton-swiper-outer{
         padding: 0 40px;
     }
 
@@ -1213,8 +1217,350 @@ body {
 }
 
 
+/* =========================
+   EXPLORE SECTION
+========================= */
+
+.explore-section{
+    padding:100px 0;
+    background:#f7f7f7;
+    overflow:hidden;
+}
+
+/* Header */
+
+.explore-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:40px;
+}
+
+.explore-subtitle{
+    display:block;
+    font-family:'Cream Cake', cursive;
+    font-size:48px;
+    color:#000;
+    margin-bottom:10px;
+    line-height:1;
+}
+
+.explore-title{
+    position:relative;
+    display:inline-block;
+    margin:0;
+
+    font-family:'Dabre Grunge', sans-serif;
+    font-size:90px;
+    line-height:1;
+    color:#000;
+}
+
+.explore-title img{
+    position:absolute;
+    left:44%;
+    bottom:5px;
+    width:240px;
+    transform:translateX(-50%);
+    z-index:-1;
+}
+
+/* Navigation */
+
+.explore-nav{
+    display:flex;
+    gap:15px;
+    margin-top:30px;
+}
+
+.explore-prev,
+.explore-next{
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:#a4002a;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#fff;
+    cursor:pointer;
+    transition:.3s ease;
+}
+
+.explore-prev:hover,
+.explore-next:hover{
+    transform:translateY(-3px);
+    background:#850021;
+}
+
+/* Swiper */
+
+.explore-card{
+    height: 470px;
+}
+.explore-slider-wrap{
+    margin-left: calc((100vw - 1320px) / 2);
+    overflow: hidden;
+}
+
+.exploreSwiper{
+    overflow: visible;
+}
+
+.exploreSwiper .swiper-slide{
+    width: 420px;
+}
+
+.exploreSwiper .swiper-slide{
+    height:auto;
+}
+
+/* Cards */
+
+.explore-card{
+    position:relative;
+    display:block;
+    height:100%;
+    text-decoration:none;
+    overflow:hidden;
+}
+
+/* Image */
+
+.explore-card img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+
+    transition:all .8s ease;
+    transform:scale(1);
+}
+
+/* IMPORTANT:
+   No image zoom to preserve distressed border shape */
+
+.explore-card:hover img{
+    transform:scale(1);
+}
+
+/* Overlay */
 
 
+
+
+
+/* Title */
+
+.explore-card h3{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:25px;
+    margin:0;
+    text-align:center;
+    font-family:'Dabre Grunge', sans-serif;
+    font-size:64px;
+    color:#fff;
+    z-index:3;
+    transition:.4s ease;
+}
+
+.explore-card:hover h3{
+    bottom:35px;
+}
+
+/* Optional subtle card lift */
+
+.explore-card{
+    transition:transform .4s ease;
+}
+
+.explore-card:hover{
+    transform:translateY(-6px);
+}
+
+/* Responsive */
+/* =========================
+   LARGE DESKTOP
+========================= */
+
+@media(min-width:1400px){
+
+    .explore-slider-wrap{
+        margin-left: calc((100vw - 1320px) / 2);
+    }
+
+    .exploreSwiper .swiper-slide{
+        width: 420px;
+    }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media(max-width:1399px){
+
+    .explore-slider-wrap{
+        margin-left: calc((100vw - 1140px) / 2);
+    }
+
+    .exploreSwiper .swiper-slide{
+        width: 380px;
+    }
+}
+
+/* =========================
+   LAPTOP
+========================= */
+
+@media(max-width:1200px){
+
+    .explore-slider-wrap{
+        margin-left: calc((100vw - 960px) / 2);
+    }
+
+    .exploreSwiper .swiper-slide{
+        width: 330px;
+    }
+
+    .explore-title{
+        font-size:70px;
+    }
+
+    .explore-card{
+        height:500px;
+    }
+
+    .explore-card h3{
+        font-size:52px;
+    }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:991px){
+
+    .explore-slider-wrap{
+        margin-left:15px;
+    }
+
+    .exploreSwiper .swiper-slide{
+        width:320px;
+    }
+
+    .explore-header{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .explore-nav{
+        margin-top:0;
+    }
+
+    .explore-title{
+        font-size:55px;
+    }
+
+    .explore-subtitle{
+        font-size:36px;
+    }
+
+    .explore-card{
+        height:420px;
+    }
+
+    .explore-card h3{
+        font-size:48px;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:767px){
+
+    .explore-section{
+        padding:70px 0;
+    }
+
+    .explore-slider-wrap{
+        margin-left:15px;
+    }
+
+    .exploreSwiper .swiper-slide{
+        width:280px;
+    }
+
+    .explore-title{
+        font-size:38px;
+    }
+
+    .explore-subtitle{
+        font-size:26px;
+    }
+
+    .explore-title img{
+        width:120px;
+        bottom:2px;
+    }
+
+    .explore-card{
+        height:350px;
+    }
+
+    .explore-card h3{
+        font-size:38px;
+        bottom:20px;
+    }
+
+    .explore-prev,
+    .explore-next{
+        width:46px;
+        height:46px;
+    }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:480px){
+
+    .explore-slider-wrap{
+        margin-left:10px;
+    }
+
+    .exploreSwiper .swiper-slide{
+        width:260px;
+    }
+
+    .explore-title{
+        font-size:32px;
+    }
+
+    .explore-subtitle{
+        font-size:20px;
+        line-height:1.3;
+    }
+
+    .explore-card{
+        height:300px;
+    }
+
+    .explore-card h3{
+        font-size:30px;
+    }
+}
+.exploreSwiper{
+    width: calc(100% + 200px);
+}
 
 
 
