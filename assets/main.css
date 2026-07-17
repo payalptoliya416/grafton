@@ -1226,7 +1226,7 @@ body {
     position: absolute;
     top: 34%;
     transform: translateY(-50%);
-    z-index: 20;
+    z-index: 10000;
 
     display: flex;
     align-items: center;
@@ -2244,4 +2244,29 @@ body {
     .footer-independent {
         text-align: center;
     }
+}
+
+
+.drag-cursor{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 1);
+    transform: translate(-50%, -50%);
+    transition: opacity .3s ease;
+}
+
+.drag-cursor span{
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
 }
