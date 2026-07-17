@@ -7,28 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Entrance animation — cans stagger in from each side one by one,
      logo pops in centered, replayed on every slide change */
 
-  function animateSlideIn(slideEl) {
-    if (!slideEl) return;
+    function animateSlideIn(slideEl) {
+      if (!slideEl) return;
 
-    const leftCans = slideEl.querySelectorAll('.hero-cans-left .hero-can');
-    const rightCans = slideEl.querySelectorAll('.hero-cans-right .hero-can');
-    const logo = slideEl.querySelector('.hero-logo-img');
+      const leftCans = slideEl.querySelectorAll('.hero-cans-left .hero-can');
+      const rightCans = slideEl.querySelectorAll('.hero-cans-right .hero-can');
+      const logo = slideEl.querySelector('.hero-logo-img');
 
-    gsap.timeline({ defaults: { ease: 'power3.out' } })
-      .from(leftCans, { opacity: 0, x: 40, duration: 0.5, stagger: 0.15 })
-      .from(rightCans, { opacity: 0, x: 40, duration: 0.5, stagger: 0.15 }, '<')
-      .fromTo(logo,
-        { opacity: 0, scale: 0.6 },
-        { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' },
-        '-=0.45'
-      )
-      .from('.hero-dots .dot', {
-        opacity: 0,
-        scale: 0,
-        duration: 0.3,
-        stagger: 0.06
-      }, '-=0.3');
-  }
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .from(leftCans, { opacity: 0, x: 40, duration: 0.5, stagger: 0.15 })
+        .from(rightCans, { opacity: 0, x: 40, duration: 0.5, stagger: 0.15 }, '<')
+        .fromTo(logo,
+          { opacity: 0, scale: 0.6 },
+          { opacity: 1, scale: 1, duration: 0.6, ease: 'back.out(1.7)' },
+          '-=0.45'
+        )
+        .from('.hero-dots .dot', {
+          opacity: 0,
+          scale: 0,
+          duration: 0.3,
+          stagger: 0.06
+        }, '-=0.3');
+    }
 
   const heroSwiperEl = document.querySelector('.hero-swiper');
 
@@ -130,30 +130,32 @@ if (hero) {
     const y = (e.clientY / window.innerHeight - 0.5) * 2;
 
     gsap.to(".hero-cans-left", {
-      x: -x * 30,
-      y: -y * 20,
+      x: -x * 40,
+      y: -y * 30,
       duration: 0.8,
       ease: "power3.out"
     });
 
     gsap.to(".hero-cans-right", {
-      x: -x * 30,
-      y: -y * 20,
+      x: x * 40,
+      y: y * 30,
       duration: 0.8,
       ease: "power3.out"
     });
 
+    const scale = 1 - (Math.abs(x) + Math.abs(y)) * 0.08;
+
     gsap.to(".hero-logo-wrap", {
-      x: -x * 15,
-      y: -y * 10,
+      scale,
       duration: 0.8,
       ease: "power3.out"
     });
+
   });
 
   hero.addEventListener("mouseleave", () => {
     gsap.to(
-      [".hero-cans-left", ".hero-cans-right", ".hero-logo-wrap"],
+      [".hero-cans-left", ".hero-cans-right"],
       {
         x: 0,
         y: 0,
@@ -161,6 +163,12 @@ if (hero) {
         ease: "power3.out"
       }
     );
+  });
+
+  gsap.to(".hero-logo-wrap", {
+    scale: 1,
+    duration: 1,
+    ease: "power3.out"
   });
 }
 
@@ -248,19 +256,17 @@ window.addEventListener("load", () => {
     // Kill old trigger on resize
     if (st) st.kill();
 
-    const slidesPerView = exploreSwiper.params.slidesPerView === "auto"
-      ? exploreSwiper.slidesPerViewDynamic()
-      : exploreSwiper.currentBreakpoint
-        ? exploreSwiper.params.slidesPerView
-        : exploreSwiper.params.slidesPerView;
+    if (window.innerWidth < 992) {
+      return;
+    }
 
-    const visibleSlides = exploreSwiper.slidesPerViewDynamic
-      ? exploreSwiper.slidesPerViewDynamic()
-      : exploreSwiper.params.slidesPerView;
+    const visibleSlides =
+      window.innerWidth >= 1200 ? 3 :
+      window.innerWidth >= 768 ? 2 : 1;
 
     const maxIndex = Math.max(
       0,
-      exploreSwiper.slides.length - Math.ceil(visibleSlides)
+      exploreSwiper.slides.length - visibleSlides
     );
 
     if (maxIndex <= 0) return;
@@ -291,4 +297,17 @@ window.addEventListener("load", () => {
     // ScrollTrigger.refresh();
     initExploreScroll();
   });
+});
+
+
+
+gsap.from(".beer-title", {
+  y: 80,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power4.out",
+  scrollTrigger: {
+    trigger: ".beer-heading-section",
+    start: "top 80%"
+  }
 });
