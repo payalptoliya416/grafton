@@ -200,141 +200,117 @@ new Swiper(".grafton-swiper", {
     }
 });
 
-// new Swiper(".exploreSwiper", {
 
-//     slidesPerView: 3,
-//     spaceBetween: 24,
+new Swiper(".exploreSwiper", {
 
-//     navigation: {
-//         nextEl: ".explore-next",
-//         prevEl: ".explore-prev",
-//     },
+    slidesPerView: 3,
+    spaceBetween: 24,
 
-//     breakpoints: {
+    navigation: {
+        nextEl: ".explore-next",
+        prevEl: ".explore-prev",
+    },
 
-//         0: {
-//             slidesPerView: 1
-//         },
+    breakpoints: {
 
-//         768: {
-//             slidesPerView: 2
-//         },
+        0: {
+            slidesPerView: 1
+        },
 
-//         1200: {
-//             slidesPerView: 3
-//         }
+        768: {
+            slidesPerView: 2
+        },
+
+        1200: {
+            slidesPerView: 3
+        }
+    }
+});
+
+
+// const exploreSwiper = new Swiper(".exploreSwiper", {
+//   slidesPerView: 2.5,
+//   spaceBetween: 24,
+//   speed: 700,
+
+//   navigation: {
+//     nextEl: ".explore-next",
+//     prevEl: ".explore-prev",
+//   },
+
+//   breakpoints: {
+//     0: { slidesPerView: 1 },
+//     768: { slidesPerView: 2 },
+//     1200: { slidesPerView: 2.5 }
+//   }
+// });
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// window.addEventListener("load", () => {
+//   const section = document.querySelector(".explore-section");
+//   if (!section || !exploreSwiper) return;
+
+//   let st;
+
+//   function initExploreScroll() {
+//     // Kill old trigger on resize
+//     if (st) st.kill();
+
+//     if (window.innerWidth < 992) {
+//       return;
 //     }
+
+//     const visibleSlides =
+//       window.innerWidth >= 1200 ? 2.5 :
+//       window.innerWidth >= 768 ? 2 : 1;
+
+//     const maxIndex = Math.max(
+//       0,
+//       exploreSwiper.slides.length - visibleSlides
+//     );
+
+//     if (maxIndex <= 0) return;
+
+//     st = ScrollTrigger.create({
+//       trigger: section,
+//       start: "bottom bottom",
+//       end: () => `+=${maxIndex * window.innerHeight}`,
+//       pin: true,
+//       pinSpacing: true,
+//       scrub: 0.3,
+//       anticipatePin: 1,
+
+//       onUpdate: (self) => {
+//         const index = Math.round(self.progress * maxIndex);
+
+//         if (index !== exploreSwiper.activeIndex) {
+//           exploreSwiper.slideTo(index);
+//         }
+//       }
+//     });
+//   }
+
+//   initExploreScroll();
+
+//   window.addEventListener("resize", () => {
+//     exploreSwiper.update();
+//     // ScrollTrigger.refresh();
+//     initExploreScroll();
+//   });
 // });
 
 
-const exploreSwiper = new Swiper(".exploreSwiper", {
-  slidesPerView: 2.5,
-  spaceBetween: 24,
-  speed: 700,
-
-  navigation: {
-    nextEl: ".explore-next",
-    prevEl: ".explore-prev",
-  },
-
-  breakpoints: {
-    0: { slidesPerView: 1 },
-    768: { slidesPerView: 2 },
-    1200: { slidesPerView: 2.5 }
-  }
-});
-
-gsap.registerPlugin(ScrollTrigger);
-
-window.addEventListener("load", () => {
-  const section = document.querySelector(".explore-section");
-  if (!section || !exploreSwiper) return;
-
-  let st;
-
-  function initExploreScroll() {
-    // Kill old trigger on resize
-    if (st) st.kill();
-
-    if (window.innerWidth < 992) {
-      return;
-    }
-
-    const visibleSlides =
-      window.innerWidth >= 1200 ? 2.5 :
-      window.innerWidth >= 768 ? 2 : 1;
-
-    const maxIndex = Math.max(
-      0,
-      exploreSwiper.slides.length - visibleSlides
-    );
-
-    if (maxIndex <= 0) return;
-
-    st = ScrollTrigger.create({
-      trigger: section,
-      start: "bottom bottom",
-      end: () => `+=${maxIndex * window.innerHeight}`,
-      pin: true,
-      pinSpacing: true,
-      scrub: 0.3,
-      anticipatePin: 1,
-
-      onUpdate: (self) => {
-        const index = Math.round(self.progress * maxIndex);
-
-        if (index !== exploreSwiper.activeIndex) {
-          exploreSwiper.slideTo(index);
-        }
-      }
-    });
-  }
-
-  initExploreScroll();
-
-  window.addEventListener("resize", () => {
-    exploreSwiper.update();
-    // ScrollTrigger.refresh();
-    initExploreScroll();
-  });
-});
+// // beer section heading animation
+// gsap.from(".beer-title", {
+//   y: 80,
+//   opacity: 0,
+//   duration: 1.2,
+//   ease: "power4.out",
+//   scrollTrigger: {
+//     trigger: ".beer-heading-section",
+//     start: "top 80%"
+//   }
+// });
 
 
-// beer section heading animation
-gsap.from(".beer-title", {
-  y: 80,
-  opacity: 0,
-  duration: 1.2,
-  ease: "power4.out",
-  scrollTrigger: {
-    trigger: ".beer-heading-section",
-    start: "top 80%"
-  }
-});
-
-
-
-
-const slider = document.querySelector('.grafton-swiper .swiper-wrapper');
-const cursor = document.querySelector('.drag-cursor');
-
-if (slider && cursor) {
-  slider.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    slider.style.cursor = 'none';
-  });
-
-  slider.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-    slider.style.cursor = 'default';
-  });
-
-  slider.addEventListener('mousemove', (e) => {
-    gsap.to(cursor, {
-      x: e.clientX,
-      y: e.clientY,
-      duration: 0.15,
-      ease: 'power2.out'
-    });
-  });
-}
