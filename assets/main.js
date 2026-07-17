@@ -148,28 +148,103 @@ new Swiper(".grafton-swiper", {
     }
 });
 
-new Swiper(".exploreSwiper", {
+// new Swiper(".exploreSwiper", {
 
-    slidesPerView: 3,
-    spaceBetween: 24,
+//     slidesPerView: 3,
+//     spaceBetween: 24,
 
-    navigation: {
-        nextEl: ".explore-next",
-        prevEl: ".explore-prev",
-    },
+//     navigation: {
+//         nextEl: ".explore-next",
+//         prevEl: ".explore-prev",
+//     },
 
-    breakpoints: {
+//     breakpoints: {
 
-        0: {
-            slidesPerView: 1
-        },
+//         0: {
+//             slidesPerView: 1
+//         },
 
-        768: {
-            slidesPerView: 2
-        },
+//         768: {
+//             slidesPerView: 2
+//         },
 
-        1200: {
-            slidesPerView: 3
+//         1200: {
+//             slidesPerView: 3
+//         }
+//     }
+// });
+
+
+const exploreSwiper = new Swiper(".exploreSwiper", {
+  slidesPerView: 3,
+  spaceBetween: 24,
+  speed: 700,
+
+  navigation: {
+    nextEl: ".explore-next",
+    prevEl: ".explore-prev",
+  },
+
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    1200: { slidesPerView: 3 }
+  }
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener("load", () => {
+  const section = document.querySelector(".explore-section");
+  if (!section || !exploreSwiper) return;
+
+  let st;
+
+  function initExploreScroll() {
+    // Kill old trigger on resize
+    if (st) st.kill();
+
+    const slidesPerView = exploreSwiper.params.slidesPerView === "auto"
+      ? exploreSwiper.slidesPerViewDynamic()
+      : exploreSwiper.currentBreakpoint
+        ? exploreSwiper.params.slidesPerView
+        : exploreSwiper.params.slidesPerView;
+
+    const visibleSlides = exploreSwiper.slidesPerViewDynamic
+      ? exploreSwiper.slidesPerViewDynamic()
+      : exploreSwiper.params.slidesPerView;
+
+    const maxIndex = Math.max(
+      0,
+      exploreSwiper.slides.length - Math.ceil(visibleSlides)
+    );
+
+    if (maxIndex <= 0) return;
+
+    st = ScrollTrigger.create({
+      trigger: section,
+      start: "bottom bottom",
+      end: () => `+=${maxIndex * window.innerHeight}`,
+      pin: true,
+      pinSpacing: true,
+      scrub: 0.3,
+      anticipatePin: 1,
+
+      onUpdate: (self) => {
+        const index = Math.round(self.progress * maxIndex);
+
+        if (index !== exploreSwiper.activeIndex) {
+          exploreSwiper.slideTo(index);
         }
-    }
+      }
+    });
+  }
+
+  initExploreScroll();
+
+  window.addEventListener("resize", () => {
+    exploreSwiper.update();
+    // ScrollTrigger.refresh();
+    initExploreScroll();
+  });
 });

@@ -304,15 +304,15 @@ body {
 }
 
 @media (max-width: 767.98px) {
-  .hero-cans-layout {
+  /* .hero-cans-layout {
     flex-wrap: wrap;
     row-gap: 20px;
-  }
+  } */
 
-  .hero-logo-wrap {
+  /* .hero-logo-wrap {
     order: -1;
     flex-basis: 100%;
-  }
+  } */
 
   .hero-can-outer,
   .hero-can-mid,
@@ -321,8 +321,12 @@ body {
   }
   .hero-logo-img {
     display: block;
-    width: clamp(200px, 21.5vw, 255px);
+    width: clamp(70px, 21.5vw, 255px) !important;
     height: auto;
+}
+
+.hero-cans-side{
+    gap:10px;
 }
 
     .findus-content{
@@ -496,6 +500,10 @@ body {
   .hero-dots {
     display: none;
   }
+
+  .hero-logo-img{
+    width:210px;
+  }
 }
 
 .beer-heading-section .container{
@@ -540,7 +548,7 @@ body {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.15);
+    transform: scale(1.25);
   }
   100% {
     transform: scale(1);
@@ -635,7 +643,13 @@ body {
     animation: underlineDraw 0.8s ease-out 1s forwards;
 }
 
-.pour-underline, .experience-underline-yellow, .footer-newsletter h2 img{
+.pour-underline{
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: underlineDraw 0.8s ease-out 3s forwards;
+}
+
+.experience-underline-yellow, .footer-newsletter h2 img{
     transform: scaleX(0);
     transform-origin: left center;
     animation: underlineDraw 0.8s ease-out 1s forwards;
@@ -1372,6 +1386,7 @@ body {
 
 .exploreSwiper{
     overflow: visible;
+    width: 100%;
 }
 
 .exploreSwiper .swiper-slide{
