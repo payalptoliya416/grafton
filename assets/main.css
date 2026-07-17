@@ -324,6 +324,10 @@ body {
     width: clamp(200px, 21.5vw, 255px);
     height: auto;
 }
+
+    .findus-content{
+        padding:40px 20px !important;
+    }
 }
 
 .hero-col-left {
@@ -493,6 +497,7 @@ body {
     display: none;
   }
 }
+
 .beer-heading-section .container{
     position: relative;
     padding: 60px 20px;
@@ -1866,13 +1871,15 @@ body {
 /* Newsletter */
 
 .footer-newsletter{
-
     background-image:url("../assets/images/footer-bg-image.png");
     background-size:cover;
     background-position:center;
-
+    z-index: 9999;
+    position: relative;
     padding:80px 20px;
     text-align:center;
+    margin-bottom: -35px;
+
 }
 
 .footer-newsletter-content{
@@ -1883,113 +1890,88 @@ body {
 .footer-newsletter h2{
 
     position:relative;
-
     display:inline-block;
-
     font-family:'Dabre Grunge', sans-serif;
     font-size:72px;
-
     color:#fff;
-
     margin-bottom:15px;
 }
 
 .footer-newsletter h2 img{
-
-    position:absolute;
-
-    right:10px;
-    bottom:5px;
-
-    width:230px;
+    position: absolute;
+    right: 10px;
+    bottom: 17px;
+    width: 300px;
+    z-index: -1;
 }
 
 .footer-newsletter p{
-
     color:#fff;
-
     font-family:'Oswald', sans-serif;
-
     font-size:20px;
-
     margin-bottom:35px;
 }
 
 /* Form */
 
 .newsletter-form{
-
     display:flex;
-
-    justify-content:center;
-
-    max-width:650px;
-
+    align-items:center;
+    background:#fff;
+    border-radius:60px;
+    padding:6px;
+    max-width:740px;
     margin:auto;
 }
 
 .newsletter-form input{
-
     flex:1;
-
-    height:60px;
-
     border:none;
-
-    border-radius:40px 0 0 40px;
-
-    padding:0 25px;
-
+    background:transparent;
+    height:40px;
+    padding:0 40px;
+    font-family:'Oswald', sans-serif;
     font-size:16px;
+    color:#222;
+    outline:none;
 }
 
 .newsletter-form button{
-
+    min-width:230px;
+    height:44px;
     border:none;
-
-    background:#f0b40b;
-
-    color:#000;
-
+    border-radius:50px;
+    background:#F5B400;
     font-family:'Oswald', sans-serif;
-
+    font-size:16px;
     font-weight:600;
-
-    padding:0 35px;
-
-    border-radius:0 40px 40px 0;
-
+    text-transform:uppercase;
+    color:#000;
     cursor:pointer;
-
-    transition:.3s;
+    transition:all .3s ease;
 }
 
 .newsletter-form button:hover{
-    background:#ffd447;
+    background:#ffcb2f;
+    transform:translateY(-2px);
 }
 
 /* Main Footer */
 
 .footer-main{
-
     background:#232323;
-
     padding:70px 0 40px;
 }
 
 .footer-grid{
-
     display:grid;
-
     grid-template-columns:
     180px
     1.4fr
     1fr
     1fr
     180px;
-
     gap:40px;
-
     align-items:start;
 }
 
@@ -1998,14 +1980,11 @@ body {
 }
 
 .footer-col h4{
-
     color:#fff;
-
     font-family:'Dabre Grunge', sans-serif;
-
     font-size:28px;
-
     margin-bottom:25px;
+
 }
 
 .footer-col ul{
@@ -2015,30 +1994,23 @@ body {
 }
 
 .footer-col li{
-
     color:#fff;
-
     margin-bottom:15px;
-
     font-family:'Oswald', sans-serif;
 }
 
 .footer-col a{
-
     color:#fff;
     text-decoration:none;
-
     transition:.3s;
 }
 
 .footer-col a:hover{
-    color:#f0b40b;
+        color:#f0b40b;
 }
 
 .footer-col i{
-
     color:#fff;
-
     margin-right:10px;
 }
 
@@ -2049,62 +2021,43 @@ body {
 /* Divider */
 
 .footer-divider{
-
     height:1px;
-
     background:rgba(255,255,255,.15);
-
     margin:50px 0;
 }
 
 /* Copyright */
 
 .footer-copy{
-
     text-align:center;
 }
 
 .footer-copy p{
-
     color:#fff;
-
     margin-bottom:10px;
-
     font-family:'Oswald', sans-serif;
 }
 
 .footer-copy span{
-
     color:#f0b40b;
-
     font-size:13px;
-
     display:block;
 }
 
 /* Bottom Logo */
 
 .footer-bottom-logo{
-
     margin-top:45px;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
     gap:20px;
 }
 
 .footer-bottom-logo span{
-
     color:#fff;
-
     font-family:'Cream Cake', cursive;
-
-    font-size:58px;
-}
+    font-size:58px;}
 
 .footer-bottom-logo img{
     max-width:90px;
@@ -2128,6 +2081,11 @@ body {
     .footer-bottom-logo{
         flex-direction:column;
     }
+
+    .footer-newsletter h2 img{
+        bottom: 1px;
+        right:0px;
+    }
 }
 
 @media(max-width:767px){
@@ -2138,8 +2096,13 @@ body {
     }
 
     .newsletter-form{
-        flex-direction:column;
-        gap:15px;
+        display: block;
+        background: transparent;
+    }
+
+    .newsletter-form input{
+        background-color: #fff;
+        margin-bottom:15px;
     }
 
     .newsletter-form input,
@@ -2155,5 +2118,9 @@ body {
     .footer-bottom-logo span{
         font-size:38px;
         text-align:center;
+    }
+
+    .footer-independent {
+        text-align: center;
     }
 }
