@@ -122,6 +122,50 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+const hero = document.querySelector(".hero-section");
+
+if (hero) {
+  hero.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 2;
+    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+    gsap.to(".hero-cans-left", {
+      x: -x * 30,
+      y: -y * 20,
+      duration: 0.8,
+      ease: "power3.out"
+    });
+
+    gsap.to(".hero-cans-right", {
+      x: -x * 30,
+      y: -y * 20,
+      duration: 0.8,
+      ease: "power3.out"
+    });
+
+    gsap.to(".hero-logo-wrap", {
+      x: -x * 15,
+      y: -y * 10,
+      duration: 0.8,
+      ease: "power3.out"
+    });
+  });
+
+  hero.addEventListener("mouseleave", () => {
+    gsap.to(
+      [".hero-cans-left", ".hero-cans-right", ".hero-logo-wrap"],
+      {
+        x: 0,
+        y: 0,
+        duration: 1,
+        ease: "power3.out"
+      }
+    );
+  });
+}
+
+
+
 new Swiper(".grafton-swiper", {
     slidesPerView: 5,
     spaceBetween: 0,
