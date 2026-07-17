@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.from('.hero-frame', { opacity: 0, scale: 0.98, duration: 0.4, ease: 'power2.out' });
 
     new Swiper(heroSwiperEl, {
+      // direction: 'vertical',
       effect: 'fade',
       fadeEffect: { crossFade: true },
       loop: false,

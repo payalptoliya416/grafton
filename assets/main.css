@@ -531,6 +531,20 @@ body {
     height: auto;
     flex-shrink: 0;
     margin-top: -36px;
+    animation: zoomInOut 3s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media(max-width:768px){
@@ -616,6 +630,26 @@ body {
     position: absolute;
     display: block;
     margin-left: -10px;
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: underlineDraw 0.8s ease-out 1s forwards;
+}
+
+.pour-underline, .experience-underline-yellow, .footer-newsletter h2 img{
+    transform: scaleX(0);
+    transform-origin: left center;
+    animation: underlineDraw 0.8s ease-out 1s forwards;
+}
+
+@keyframes underlineDraw {
+    from {
+        transform: scaleX(0);
+        opacity: 0.4;
+    }
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
 }
 
 .experience-grid {
@@ -1028,19 +1062,41 @@ body {
 .grafton-can-image img{
     max-height: 100%;
     width: auto;
-   animation:graftonFloat 4s ease-in-out infinite;
 }
-@keyframes graftonFloat{
-    0%{
-        transform:translateY(0);
+
+.swiper-slide:nth-child(odd) .grafton-can-image img {
+    animation: floatUp 4s ease-in-out infinite;
+}
+
+/* Even cards: down → up → down */
+.swiper-slide:nth-child(even) .grafton-can-image img {
+    animation: floatDown 4s ease-in-out infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
     }
-    50%{
-        transform:translateY(-12px);
+    50% {
+        transform: translateY(-12px);
     }
-    100%{
-        transform:translateY(0);
+    100% {
+        transform: translateY(0);
     }
 }
+
+@keyframes floatDown {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(12px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 .grafton-product-card:hover .grafton-can-image img{
     transform:translateY(-18px) scale(1.05);
 }
