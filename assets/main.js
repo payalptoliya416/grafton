@@ -228,7 +228,7 @@ new Swiper(".grafton-swiper", {
 
 
 const exploreSwiper = new Swiper(".exploreSwiper", {
-  slidesPerView: 3,
+  slidesPerView: 2.5,
   spaceBetween: 24,
   speed: 700,
 
@@ -240,7 +240,7 @@ const exploreSwiper = new Swiper(".exploreSwiper", {
   breakpoints: {
     0: { slidesPerView: 1 },
     768: { slidesPerView: 2 },
-    1200: { slidesPerView: 3 }
+    1200: { slidesPerView: 2.5 }
   }
 });
 
@@ -261,7 +261,7 @@ window.addEventListener("load", () => {
     }
 
     const visibleSlides =
-      window.innerWidth >= 1200 ? 3 :
+      window.innerWidth >= 1200 ? 2.5 :
       window.innerWidth >= 768 ? 2 : 1;
 
     const maxIndex = Math.max(
@@ -300,7 +300,7 @@ window.addEventListener("load", () => {
 });
 
 
-
+// beer section heading animation
 gsap.from(".beer-title", {
   y: 80,
   opacity: 0,

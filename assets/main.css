@@ -183,6 +183,7 @@ body {
   box-shadow: 0 0 0 0.15rem rgba(201, 163, 90, 0.5);
 }
 
+
 /* ==========================================================================
    Responsive — collapse nav below large breakpoint
    ========================================================================== */
@@ -233,7 +234,7 @@ body {
 
 .hero-section {
   width: 100%;
-  padding:60px 20px 10px;
+  padding:60px 1px 10px;
   background: #ffffff;
 }
 
@@ -1425,9 +1426,9 @@ body {
 
     /* Swiper */
 
-    .explore-card{
-        height: 470px;
-    }
+    /* .explore-card{
+        height: 450px;
+    } */
     .explore-slider-wrap{
         margin-left: calc((100vw - 1320px) / 2);
         overflow: hidden;
@@ -1439,7 +1440,7 @@ body {
     }
 
     .exploreSwiper .swiper-slide{
-        width: 420px;
+        width: 510px;
     }
 
     .exploreSwiper .swiper-slide{
@@ -1556,6 +1557,10 @@ body {
 
         .explore-card{
             height:500px;
+        }
+
+        .explore-card img{
+            height:350px;
         }
 
         .explore-card h3{
