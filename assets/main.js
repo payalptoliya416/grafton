@@ -23,7 +23,7 @@
 
 // Beer with Flavour section slider start
 const exploreSwiper = new Swiper(".exploreSwiper", {
-  slidesPerView: 2.5,
+  slidesPerView: 2.6,
   spaceBetween: 24,
   speed: 700,
 
@@ -32,10 +32,37 @@ const exploreSwiper = new Swiper(".exploreSwiper", {
     prevEl: ".explore-prev",
   },
 
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+
   breakpoints: {
-    0: { slidesPerView: 1 },
-    768: { slidesPerView: 2 },
-    1200: { slidesPerView: 2.5 }
+    0: { 
+      slidesPerView: 1,
+      autoplay: {
+        enabled: true,
+      },
+     },
+     500: { 
+      slidesPerView: 1.8,
+      autoplay: {
+        enabled: true,
+      },
+     },
+    768: { 
+      slidesPerView: 2,
+      autoplay: {
+        enabled: true,
+      },
+     },
+    1200: { 
+      slidesPerView: 2.6,
+      autoplay: {
+        enabled: false,
+      }
+     }
   }
 });
 
