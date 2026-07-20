@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'Hubot Sans';
-  src: url('fonts/HubotSansVF-Regular.ttf') format('truetype');
+  src: url('../fonts/HubotSansVF-Regular.ttf') format('truetype');
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: 'Dabre Grunge';
-  src: url('fonts/Dabre Grunge.otf') format('opentype');
+  src: url('../fonts/Dabre Grunge.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: 'Cream Cake';
-  src: url('fonts/Cream Cake.otf') format('opentype');
+  src: url('../fonts/Cream Cake.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -35,7 +35,7 @@
 
 @font-face {
   font-family: 'Cream Cake';
-  src: url('fonts/Cream Cake Bold.otf') format('opentype');
+  src: url('../fonts/Cream Cake Bold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -65,7 +65,7 @@ body {
 .ribbon-nav {
   width: 100%;
   height: clamp(72px, 9.5vw, 98px);
-  background-image: url('images/header-bg.png');
+  background-image: url('../images/header-bg.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: center;
@@ -601,8 +601,8 @@ body {
     overflow: hidden;
 
     /* Background Image */
-    background: url('../assets/images/bg-grain.png') center center no-repeat;
-    background-size: auto;
+    background: url('../images/bg-grain.png') center center no-repeat;
+    background-size: 88% 70%;
 }
 
 .beer-title-wrapper{
@@ -640,6 +640,13 @@ body {
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@media(max-width:1024px){
+    
+    .beer-heading-section .container{
+        background-size: 100% 90%;
     }
 }
 
@@ -840,6 +847,18 @@ opacity: 0;
   inset: 0;
   background-size: cover;
   background-position: center;
+   z-index:1;
+}
+
+.pour-video{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    visibility:hidden;
+    z-index:2;
 }
 
 .pour-content {
@@ -852,6 +871,7 @@ opacity: 0;
   gap: 25px;
   text-align: center;
   padding: 230px 5%;
+  
 }
 
 .pour-heading {
@@ -954,7 +974,7 @@ opacity: 0;
 .heritage-content {
     width: 60%;
     position: relative;
-    background-image:url('../assets/images/Mask\ group\ \(7\).png');
+    background-image:url('../images/Mask\ group\ \(7\).png');
     background-size: 102% 100%;
     background-repeat: no-repeat;
     background-position: left center;
@@ -1048,7 +1068,7 @@ opacity: 0;
 .heritage-content {
     width: 60%;
     position: relative;
-    background-image: url('../assets/images/bg-heritage-mobile.png');
+    background-image: url('../images/bg-heritage-mobile.png');
     background-size: 102% 100%;
     background-repeat: no-repeat;
     background-position: left center;
@@ -2037,7 +2057,7 @@ opacity: 0;
 /* Newsletter */
 
 .footer-newsletter{
-    background-image:url("../assets/images/bg-footer.png");
+    background-image:url("../images/bg-footer.png");
     background-size:cover;
     background-position:center;
     background-repeat: no-repeat;

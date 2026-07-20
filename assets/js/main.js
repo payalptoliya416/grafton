@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.8,
                 ease: "power3.in"
             })
-            
+
             .to(".pour-underline", {
                 scaleX: 0,
                 opacity: 0,
@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.5,
                 ease: "power2.in"
             }, "-=0.5")
-            
+
             .to(".pour-cta", {
                 y: -40,
                 opacity: 0,
