@@ -53,11 +53,7 @@ window.addEventListener("resize", initJourneySwiper);
   if (!mainEl || !footerEl) return;
 
   function syncFooterSpacer() {
-    if (window.innerWidth <= 991) {
-      mainEl.style.marginBottom = "0";
-    } else {
-      mainEl.style.marginBottom = footerEl.offsetHeight + "px";
-    }
+    mainEl.style.marginBottom = footerEl.offsetHeight + "px";
   }
 
   syncFooterSpacer();
