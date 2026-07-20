@@ -1500,7 +1500,7 @@ opacity: 0;
 
     .explore-card img{
         width: 100%;
-        height: 520px;
+        height: auto;
         display: block;
         transition: all .8s ease;
         transform: scale(1);
@@ -1560,9 +1560,6 @@ opacity: 0;
             width: 420px;
         }
         
-        .explore-card img{
-            height: 480px;
-        }
     }
 
     /* =========================
@@ -1579,9 +1576,6 @@ opacity: 0;
             width: 380px;
         }
         
-        .explore-card img{
-            height: 450px;
-        }
     }
 
     /* =========================
@@ -1602,11 +1596,6 @@ opacity: 0;
             font-size:70px;
         }
 
-
-        .explore-card img{
-            height:400px;
-        }
-
         .explore-card h3{
             font-size:52px;
         }
@@ -1619,7 +1608,7 @@ opacity: 0;
     @media(max-width:991px){
 
         .explore-slider-wrap{
-            margin-left:15px;
+            margin: 0 15px;
         }
 
         .exploreSwiper .swiper-slide{
@@ -1658,10 +1647,6 @@ opacity: 0;
             padding:70px 0;
         }
 
-        .explore-slider-wrap{
-            margin-left:15px;
-        }
-
         .exploreSwiper .swiper-slide{
             width:280px;
         }
@@ -1689,10 +1674,6 @@ opacity: 0;
             width:46px;
             height:46px;
         }
-        
-        .explore-card img {
-            height: 350px;
-        }
     }
 
     /* =========================
@@ -1702,7 +1683,7 @@ opacity: 0;
     @media(max-width:480px){
 
         .explore-slider-wrap{
-            margin-left:10px;
+            margin: 0 10px;
         }
 
         .exploreSwiper .swiper-slide{
@@ -1716,10 +1697,6 @@ opacity: 0;
         .explore-subtitle{
             font-size:20px;
             line-height:1.3;
-        }
-
-        .explore-card h3{
-            font-size:30px;
         }
     }
 
@@ -1873,9 +1850,32 @@ opacity: 0;
 /* Grid */
 
 .journey-grid{
-    display:grid;
-    grid-template-columns:repeat(6,1fr);
+    display:flex;
+    /* display:grid;
+    grid-template-columns:repeat(6,1fr); */
     gap:0;
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+
+    .journeySwiper {
+        overflow: visible;
+    }
+
+    .journeySwiper .swiper-wrapper {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 0;
+        transform: none !important;
+        transition-timing-function: linear !important;
+    }
+
+    .journeySwiper .swiper-slide {
+        width: auto !important;
+        margin-right: 0 !important;
+    }
+
 }
 
 /* Cards */
@@ -1988,9 +1988,14 @@ opacity: 0;
         font-size:42px;
     }
 
-    .journey-grid{
-        grid-template-columns:repeat(3,1fr);
+    .journeySwiper .swiper-wrapper {
+        display: flex;
     }
+
+    .journeySwiper .swiper-slide {
+        width: auto;
+    }
+
 }
 
 /* Mobile */
@@ -2004,10 +2009,6 @@ opacity: 0;
     .journey-heading{
         font-size:30px;
         padding:0 15px;
-    }
-
-    .journey-grid{
-        grid-template-columns:repeat(2,1fr);
     }
 
     .journey-card::after{

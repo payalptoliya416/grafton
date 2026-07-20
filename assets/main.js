@@ -1,3 +1,50 @@
+let journeySwiper;
+
+function initJourneySwiper() {
+
+    if (window.innerWidth < 992) {
+
+        if (!journeySwiper) {
+
+            journeySwiper = new Swiper(".journeySwiper", {
+                slidesPerView: 1.2,
+                spaceBetween: 0,
+                loop: true,
+                speed: 5000,
+                allowTouchMove: true,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: false,
+                },
+
+                breakpoints: {
+                    0: {
+                        slidesPerView: 2,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                    }
+                }
+            });
+
+        }
+
+    } else {
+
+        if (journeySwiper) {
+            journeySwiper.destroy(true, true);
+            journeySwiper = null;
+        }
+
+    }
+
+}
+
+window.addEventListener("load", initJourneySwiper);
+window.addEventListener("resize", initJourneySwiper);
+
+
 // Sticky reveal footer — main scrolls over the fixed footer, then
 // reveals it in a spacer sized to the footer's real (responsive) height
 (() => {
