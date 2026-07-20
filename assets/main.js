@@ -1,3 +1,107 @@
+// Sticky reveal footer — main scrolls over the fixed footer, then
+// reveals it in a spacer sized to the footer's real (responsive) height
+(() => {
+  const mainEl = document.querySelector('main');
+  const footerEl = document.querySelector('.grafton-footer');
+  if (!mainEl || !footerEl) return;
+
+  function syncFooterSpacer() {
+    if (window.innerWidth <= 991) {
+      mainEl.style.marginBottom = "0";
+    } else {
+      mainEl.style.marginBottom = footerEl.offsetHeight + "px";
+    }
+  }
+
+  syncFooterSpacer();
+  window.addEventListener('load', syncFooterSpacer);
+  window.addEventListener('resize', syncFooterSpacer);
+})();
+
+
+
+
+// Beer with Flavour section slider start
+const exploreSwiper = new Swiper(".exploreSwiper", {
+  slidesPerView: 2.5,
+  spaceBetween: 24,
+  speed: 700,
+
+  navigation: {
+    nextEl: ".explore-next",
+    prevEl: ".explore-prev",
+  },
+
+  breakpoints: {
+    0: { slidesPerView: 1 },
+    768: { slidesPerView: 2 },
+    1200: { slidesPerView: 2.5 }
+  }
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener("load", () => {
+  const section = document.querySelector(".explore-section");
+  if (!section || !exploreSwiper) return;
+
+  let st;
+
+  function initExploreScroll() {
+    // Kill old trigger on resize
+    if (st) st.kill();
+
+    if (window.innerWidth < 992) {
+      return;
+    }
+
+    const visibleSlides =
+      window.innerWidth >= 1200 ? 2.5 :
+      window.innerWidth >= 768 ? 2 : 1;
+
+    const maxIndex = Math.max(
+      0,
+      exploreSwiper.slides.length - visibleSlides
+    );
+
+    if (maxIndex <= 0) return;
+
+    st = ScrollTrigger.create({
+      trigger: section,
+      start: "bottom bottom",
+      end: () => `+=${maxIndex * window.innerHeight}`,
+      pin: true,
+      pinSpacing: true,
+      scrub: 0.3,
+      anticipatePin: 1,
+
+      onUpdate: (self) => {
+        const index = Math.round(self.progress * maxIndex);
+
+        if (index !== exploreSwiper.activeIndex) {
+          exploreSwiper.slideTo(index);
+        }
+      }
+    });
+  }
+
+  initExploreScroll();
+  ScrollTrigger.refresh();
+    
+    if (typeof AOS !== "undefined") {
+      AOS.refresh();
+    }
+
+  window.addEventListener("resize", () => {
+    exploreSwiper.update();
+    // ScrollTrigger.refresh();
+    initExploreScroll();
+  });
+});
+
+// Beer with Flavour section slider end
+
+
 document.addEventListener('DOMContentLoaded', () => {
   if (typeof gsap === 'undefined' || typeof SplitText === 'undefined') return;
 
@@ -58,51 +162,92 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* Pour section — sticky pinned background, staged scroll reveal:
-     scroll stage 1 brings the heading + underline in, scroll stage 2 brings the button in.
-     Same mechanism as the reference site's sticky-image section: pinned via a taller
-     wrapper + position:sticky, content revealed by a scrubbed timeline. */
-
-  if (typeof ScrollTrigger !== 'undefined' && document.querySelector('.pour-section')) {
-    const pourEnd = () => {
-      const sectionH = document.querySelector('.pour-section').offsetHeight;
-      const wrapH = document.querySelector('.pour-sticky-wrap').offsetHeight;
-      return `+=${sectionH - wrapH}`;
-    };
-
-    gsap.timeline({
-      scrollTrigger: {
-        trigger: '.pour-section',
-        start: 'top top',
-        end: pourEnd,
-        scrub: true
+      /* Pour section — sticky pinned background, staged scroll reveal:
+         scroll stage 1 brings the heading + underline in, scroll stage 2 brings the button in.
+         Same mechanism as the reference site's sticky-image section: pinned via a taller
+         wrapper + position:sticky, content revealed by a scrubbed timeline. */
+    
+      if (typeof ScrollTrigger !== 'undefined' && document.querySelector('.pour-section')) {
+        const pourEnd = () => {
+          const sectionH = document.querySelector('.pour-section').offsetHeight;
+          const wrapH = document.querySelector('.pour-sticky-wrap').offsetHeight;
+          return `+=${sectionH - wrapH}`;
+        };
+          
+          
+          const tl = gsap.timeline({
+              scrollTrigger: {
+                trigger: ".pour-section",
+                start: "top top",
+                end: pourEnd,
+                scrub: 1.5
+              }
+            });
+            
+            // ---------- IN ----------
+            tl.from(".pour-heading-text", {
+                y: 80,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            })
+            
+            .from(".pour-underline", {
+                scaleX: 0,
+                opacity: 0,
+                transformOrigin: "left center",
+                duration: 0.5,
+                ease: "power2.out"
+            }, "+=0.1")
+            
+            .from(".pour-cta", {
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            }, "+=0.1")
+            
+            // ---------- HOLD ----------
+            .to({}, {
+                duration: 1
+            })
+            
+            // ---------- OUT ----------
+            .to(".pour-heading-text", {
+                y: -80,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.in"
+            })
+            
+            .to(".pour-underline", {
+                scaleX: 0,
+                opacity: 0,
+                transformOrigin: "left center",
+                duration: 0.5,
+                ease: "power2.in"
+            }, "-=0.5")
+            
+            .to(".pour-cta", {
+                y: -40,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.in"
+            }, "-=0.4");
+    
+        /* Background media shrinks slightly as you scroll through the section,
+           matching the reference site's sticky-image scale-down behavior */
+        gsap.to('.pour-media', {
+          scale: 0.9,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '.pour-section',
+            start: 'top top',
+            end: pourEnd,
+            scrub: 2
+          }
+        });
       }
-    })
-      .from('.pour-heading-text', { y: 100, opacity: 0, ease: 'none', duration: 1 })
-      .from('.pour-underline', {
-        scaleX: 0,
-        transformOrigin: 'left center',
-        opacity: 0,
-        ease: 'none',
-        duration: 0.6
-      }, '-=0.3')
-      .to({}, { duration: 0.5 })
-      .from('.pour-cta', { y: 30, opacity: 0, ease: 'none', duration: 1 })
-      .to({}, { duration: 0.8 });
-
-    /* Background media shrinks slightly as you scroll through the section,
-       matching the reference site's sticky-image scale-down behavior */
-    gsap.to('.pour-media', {
-      scale: 0.9,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.pour-section',
-        start: 'top top',
-        end: pourEnd,
-        scrub: true
-      }
-    });
-  }
 
   /* Beer cards — play video on hover, pause + rewind on leave */
 
@@ -201,141 +346,80 @@ new Swiper(".grafton-swiper", {
 });
 
 
-new Swiper(".exploreSwiper", {
+// new Swiper(".exploreSwiper", {
 
-    slidesPerView: 3,
-    spaceBetween: 24,
+//     slidesPerView: 3,
+//     spaceBetween: 24,
 
-    navigation: {
-        nextEl: ".explore-next",
-        prevEl: ".explore-prev",
-    },
+//     navigation: {
+//         nextEl: ".explore-next",
+//         prevEl: ".explore-prev",
+//     },
 
-    breakpoints: {
+//     breakpoints: {
 
-        0: {
-            slidesPerView: 1
-        },
+//         0: {
+//             slidesPerView: 1
+//         },
 
-        768: {
-            slidesPerView: 2
-        },
+//         768: {
+//             slidesPerView: 2
+//         },
 
-        1200: {
-            slidesPerView: 3
-        }
-    }
-});
-
-
-// const exploreSwiper = new Swiper(".exploreSwiper", {
-//   slidesPerView: 2.5,
-//   spaceBetween: 24,
-//   speed: 700,
-
-//   navigation: {
-//     nextEl: ".explore-next",
-//     prevEl: ".explore-prev",
-//   },
-
-//   breakpoints: {
-//     0: { slidesPerView: 1 },
-//     768: { slidesPerView: 2 },
-//     1200: { slidesPerView: 2.5 }
-//   }
-// });
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// window.addEventListener("load", () => {
-//   const section = document.querySelector(".explore-section");
-//   if (!section || !exploreSwiper) return;
-
-//   let st;
-
-//   function initExploreScroll() {
-//     // Kill old trigger on resize
-//     if (st) st.kill();
-
-//     if (window.innerWidth < 992) {
-//       return;
-//     }
-
-//     const visibleSlides =
-//       window.innerWidth >= 1200 ? 2.5 :
-//       window.innerWidth >= 768 ? 2 : 1;
-
-//     const maxIndex = Math.max(
-//       0,
-//       exploreSwiper.slides.length - visibleSlides
-//     );
-
-//     if (maxIndex <= 0) return;
-
-//     st = ScrollTrigger.create({
-//       trigger: section,
-//       start: "bottom bottom",
-//       end: () => `+=${maxIndex * window.innerHeight}`,
-//       pin: true,
-//       pinSpacing: true,
-//       scrub: 0.3,
-//       anticipatePin: 1,
-
-//       onUpdate: (self) => {
-//         const index = Math.round(self.progress * maxIndex);
-
-//         if (index !== exploreSwiper.activeIndex) {
-//           exploreSwiper.slideTo(index);
+//         1200: {
+//             slidesPerView: 2.6
 //         }
-//       }
-//     });
-//   }
-
-//   initExploreScroll();
-
-//   window.addEventListener("resize", () => {
-//     exploreSwiper.update();
-//     // ScrollTrigger.refresh();
-//     initExploreScroll();
-//   });
+//     }
 // });
 
 
-// beer section heading animation
-gsap.from(".beer-title", {
-  y: 80,
-  opacity: 0,
-  duration: 1.2,
-  ease: "power4.out",
-  scrollTrigger: {
-    trigger: ".beer-heading-section",
-    start: "top 80%"
+// New Slider Hero Section
+document.addEventListener('DOMContentLoaded', () => {
+  const newHeroSwiperEl = document.querySelector('.new-hero-swiper');
+  if (!newHeroSwiperEl || typeof Swiper === 'undefined') return;
+
+  function animateNewHeroSlide(swiper) {
+    const activeImg = swiper.slides[swiper.activeIndex].querySelector('.new-hero-slide-img');
+    if (!activeImg) return;
+
+    if (typeof gsap !== 'undefined') {
+      gsap.fromTo(activeImg,
+        { opacity: 0, scale: 1.12 },
+        { opacity: 1, scale: 1, duration: 1.6, ease: 'power2.out' }
+      );
+    } else {
+      activeImg.classList.remove('new-hero-css-fallback');
+      void activeImg.offsetWidth;
+      activeImg.classList.add('new-hero-css-fallback');
+    }
   }
+
+  const newHeroSwiper = new Swiper(newHeroSwiperEl, {
+    effect: 'fade',
+    fadeEffect: { crossFade: true },
+    loop: true,
+    speed: 1000,
+    autoplay: {
+      delay: 4500,
+      disableOnInteraction: false
+    },
+    pagination: {
+      el: '.new-hero-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.new-hero-next',
+      prevEl: '.new-hero-prev'
+    },
+    on: {
+      init(swiper) {
+        animateNewHeroSlide(swiper);
+      },
+      slideChangeTransitionStart(swiper) {
+        animateNewHeroSlide(swiper);
+      }
+    }
+  });
 });
-
-
-const slider = document.querySelector('.grafton-swiper');
-const cursor = document.querySelector('.drag-cursor');
-
-if (slider && cursor) {
-  slider.addEventListener('mouseenter', () => {
-    cursor.style.opacity = '1';
-    slider.style.cursor = 'none';
-  });
-
-  slider.addEventListener('mouseleave', () => {
-    cursor.style.opacity = '0';
-    slider.style.cursor = 'default';
-  });
-
-  slider.addEventListener('mousemove', (e) => {
-    gsap.to(cursor, {
-      x: e.clientX,
-      y: e.clientY,
-      duration: 0.15,
-      ease: 'power2.out'
-    });
-  });
-}
 
 

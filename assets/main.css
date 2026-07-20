@@ -47,6 +47,7 @@ body {
   margin: 0;
   background: #ffffff;
   font-family: 'Oswald', sans-serif;
+  display: flow-root; /* stops main's bottom-margin spacer collapsing into body, which was capping scroll short of the fixed footer reveal */
 }
 
 /* ==========================================================================
@@ -558,7 +559,7 @@ body {
 
 .beer-heading-section .container{
     position: relative;
-    padding: 60px 20px;
+    padding: 110px 20px 90px;
     text-align: center;
     overflow: hidden;
 
@@ -594,18 +595,23 @@ body {
 }
 
 @keyframes zoomInOut {
-  0% {
+    0% {
     transform: scale(1);
-  }
-  50% {
-    transform: scale(1.25);
-  }
-  100% {
-    transform: scale(1);
-  }
+    }
+    50% {
+        transform: scale(1.25);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 @media(max-width:768px){
+    
+    .beer-heading-section .container{
+        padding: 50px 20px;
+    }
+
 
     .beer-title-wrapper{
         gap: 12px;
@@ -653,7 +659,6 @@ body {
 
 .experience-heading {
   align-items: baseline;
-  /* justify-content: center;  */
   gap: clamp(10px, 1.6vw, 20px);
   flex-wrap: wrap;
   margin: 0 0 clamp(20px, 6vw, 10px);
@@ -682,38 +687,39 @@ body {
 }
 
 .experience-underline {
-    width: 100%;
-    bottom: 20%;
-    z-index: -1;
-    position: absolute;
-    display: block;
-    margin-left: -10px;
-    transform: scaleX(0);
-    transform-origin: left center;
-    animation: underlineDraw 0.8s ease-out 1s forwards;
-}
-
-.pour-underline{
-    transform: scaleX(0);
-    transform-origin: left center;
-    animation: underlineDraw 0.8s ease-out 3s forwards;
+width: 100%;
+bottom: 20%;
+z-index: -1;
+position: absolute;
+display: block;
+margin-left: -10px;
+transform: scaleX(0);
+transform-origin: left center;
+animation: underlineDraw 2.5s ease-in-out infinite;
 }
 
 .experience-underline-yellow, .footer-newsletter h2 img{
-    transform: scaleX(0);
-    transform-origin: left center;
-    animation: underlineDraw 0.8s ease-out 1s forwards;
+transform: scaleX(0);
+transform-origin: left center;
+animation: underlineDraw 2.5s ease-in-out infinite;
 }
 
 @keyframes underlineDraw {
-    from {
-        transform: scaleX(0);
-        opacity: 0.4;
-    }
-    to {
-        transform: scaleX(1);
-        opacity: 1;
-    }
+0% {
+transform: scaleX(0);
+opacity: 0;
+}
+
+40%,
+70% {
+transform: scaleX(1);
+opacity: 1;
+}
+
+100% {
+transform: scaleX(0);
+opacity: 0;
+}
 }
 
 .experience-grid {
@@ -1424,9 +1430,9 @@ body {
 
     /* Swiper */
 
-    /* .explore-card{
-        height: 450px;
-    } */
+     .explore-card{
+        height: auto;
+    } 
     .explore-slider-wrap{
         margin-left: calc((100vw - 1320px) / 2);
         overflow: hidden;
@@ -1438,7 +1444,7 @@ body {
     }
 
     .exploreSwiper .swiper-slide{
-        width: 510px;
+        width: 420px;
     }
 
     .exploreSwiper .swiper-slide{
@@ -1459,7 +1465,7 @@ body {
 
     .explore-card img{
         width: 100%;
-        height: 560px;
+        height: 520px;
         display: block;
         transition: all .8s ease;
         transform: scale(1);
@@ -1518,6 +1524,10 @@ body {
         .exploreSwiper .swiper-slide{
             width: 420px;
         }
+        
+        .explore-card img{
+            height: 480px;
+        }
     }
 
     /* =========================
@@ -1532,6 +1542,10 @@ body {
 
         .exploreSwiper .swiper-slide{
             width: 380px;
+        }
+        
+        .explore-card img{
+            height: 450px;
         }
     }
 
@@ -1553,12 +1567,9 @@ body {
             font-size:70px;
         }
 
-        .explore-card{
-            height:500px;
-        }
 
         .explore-card img{
-            height:350px;
+            height:400px;
         }
 
         .explore-card h3{
@@ -1597,10 +1608,6 @@ body {
             font-size:36px;
         }
 
-        .explore-card{
-            height:420px;
-        }
-
         .explore-card h3{
             font-size:48px;
         }
@@ -1637,10 +1644,6 @@ body {
             bottom:2px;
         }
 
-        .explore-card{
-            height:450px;
-        }
-
         .explore-card h3{
             font-size:38px;
             bottom:20px;
@@ -1650,6 +1653,10 @@ body {
         .explore-next{
             width:46px;
             height:46px;
+        }
+        
+        .explore-card img {
+            height: 350px;
         }
     }
 
@@ -1807,7 +1814,7 @@ body {
 ========================= */
 
 .journey-section{
-    background:#f5f4ef;
+    /*background:#f5f4ef;*/
     padding:80px 0;
     overflow:hidden;
 }
@@ -1979,22 +1986,25 @@ body {
 /* =========================
    FOOTER
 ========================= */
-
 .grafton-footer{
-    overflow:hidden;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+    overflow: hidden;
 }
 
 /* Newsletter */
 
 .footer-newsletter{
-    background-image:url("../assets/images/footer-bg-image.png");
+    background-image:url("../assets/images/bg-footer.png");
     background-size:cover;
     background-position:center;
-    z-index: 9999;
+    background-repeat: no-repeat;
     position: relative;
-    padding:80px 20px;
+    padding:120px 20px;
     text-align:center;
-    margin-bottom: -35px;
 
 }
 
@@ -2036,7 +2046,7 @@ body {
     background:#fff;
     border-radius:60px;
     padding:6px;
-    max-width:740px;
+    max-width:460px;
     margin:auto;
 }
 
@@ -2053,7 +2063,7 @@ body {
 }
 
 .newsletter-form button{
-    min-width:230px;
+    min-width:180px;
     height:44px;
     border:none;
     border-radius:50px;
@@ -2075,7 +2085,7 @@ body {
 /* Main Footer */
 
 .footer-main{
-    background:#232323;
+    background:#262626;
     padding:70px 0 40px;
 }
 
@@ -2184,6 +2194,10 @@ body {
 
 
 @media(max-width:991px){
+    
+    .grafton-footer{
+        position: static;
+    }
 
     .footer-grid{
         grid-template-columns:1fr 1fr;
@@ -2242,29 +2256,150 @@ body {
     .footer-independent {
         text-align: center;
     }
+    
+    .footer-col{
+        justify-items: center;
+    }
+    
+    .footer-col ul{
+        justify-items: center;
+    }
+}
+
+/* Sticky reveal footer — main scrolls in front (opaque), footer-main
+   is pinned behind it and only reveals in the spacer gap main.js adds
+   as margin-bottom (measured from .grafton-footer's real height). */
+
+main{
+    position: relative;
+    background: #fff;
+    z-index: 2;
 }
 
 
-.drag-cursor{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 70px;
-    height: 70px;
-    pointer-events: none;
-    z-index: 99999;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* ==========================================================================
+   New Slider Hero Section
+   ========================================================================== */
+
+.new-hero-slider-section {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+}
+
+.new-hero-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.new-hero-swiper .swiper-slide {
+  width: 100%;
+  aspect-ratio: 2560 / 800;
+  overflow: hidden;
+}
+
+.new-hero-slide-inner {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.new-hero-slide-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scale(1.12);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.new-hero-slide-img.new-hero-css-fallback {
+  animation: newHeroKenBurns 6.5s ease-out forwards;
+}
+
+@keyframes newHeroKenBurns {
+  0% {
     opacity: 0;
-    transform: translate(-50%, -50%);
-    transition: opacity .3s ease;
+    transform: scale(1.12);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
-.drag-cursor span{
-    font-size: 18px;
-    font-weight: 600;
-    color: #000;
+/* Pagination */
+
+.new-hero-swiper .new-hero-pagination {
+  position: absolute;
+  right: clamp(20px, 3vw, 40px);
+  left: auto;
+  bottom: auto;
+  top: 50%;
+  width: auto;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 5;
+}
+
+.new-hero-swiper .new-hero-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.55;
+  margin: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.new-hero-swiper .new-hero-pagination .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: var(--ribbon-red);
+  transform: scale(1.15);
+}
+
+/* Nav arrows */
+
+.new-hero-swiper .new-hero-nav {
+  display: none;
+}
+
+@media (max-width: 767.98px) {
+  .new-hero-swiper .swiper-slide {
+    aspect-ratio: 16 / 12;
+  }
+
+  .new-hero-slide-img {
+    object-position: left center;
+  }
+
+  .new-hero-swiper .new-hero-nav {
+    display: none;
+  }
+}
+
+/* Beer card hover reveal gif */
+
+.beer-card-gif {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.beer-card:hover .beer-card-gif {
+  opacity: 1;
 }
