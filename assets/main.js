@@ -351,6 +351,7 @@ new Swiper(".grafton-swiper", {
     spaceBetween: 0,
     centeredSlides: false,
     watchOverflow: true,
+    rewind: true,
     navigation: {
         nextEl: ".grafton-slider-next",
         prevEl: ".grafton-slider-prev",

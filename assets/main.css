@@ -942,7 +942,7 @@ opacity: 0;
 .heritage-image img{
     width:100%;
     height:100%;
-    object-fit:cover;
+    object-fit:unset;
     display:block;
 }
 
@@ -2284,7 +2284,7 @@ opacity: 0;
     }
 
     .footer-bottom-logo span{
-        font-size:38px;
+        font-size:26px;
         text-align:center;
     }
 
