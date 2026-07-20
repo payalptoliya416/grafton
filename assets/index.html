@@ -27,28 +27,34 @@
   <nav class="ribbon-nav navbar navbar-expand-lg navbar-dark">
     <div class="ribbon-inner">
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="mainNav">
-        <div class="nav-col nav-col-left">
-          <ul class="nav-list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="beers.html">Beers</a></li>
-            <li><a href="menu.html">Menu</a></li>
-            <li><a href="menu.html">STOCKIST</a></li>
-          </ul>
+      <div class="offcanvas-lg offcanvas-start navbar-collapse" tabindex="-1" id="mainNav" aria-labelledby="mainNavLabel">
+        <div class="offcanvas-header">
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#mainNav" aria-label="Close"></button>
         </div>
 
-        <div class="nav-col nav-col-right">
-          <ul class="nav-list">
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="whats-on.html">What's On</a></li>
-            <li><a href="functions.html">Functions</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
+        <div class="offcanvas-body">
+          <div class="nav-col nav-col-left">
+            <ul class="nav-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="beers.html">Beers</a></li>
+              <li><a href="menu.html">Menu</a></li>
+              <li><a href="menu.html">STOCKIST</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-col nav-col-right">
+            <ul class="nav-list">
+              <li><a href="shop.html">Shop</a></li>
+              <li><a href="whats-on.html">What's On</a></li>
+              <li><a href="functions.html">Functions</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
         </div>
       </div>
 
