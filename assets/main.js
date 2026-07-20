@@ -301,16 +301,41 @@ new Swiper(".exploreSwiper", {
 // });
 
 
-// // beer section heading animation
-// gsap.from(".beer-title", {
-//   y: 80,
-//   opacity: 0,
-//   duration: 1.2,
-//   ease: "power4.out",
-//   scrollTrigger: {
-//     trigger: ".beer-heading-section",
-//     start: "top 80%"
-//   }
-// });
+// beer section heading animation
+gsap.from(".beer-title", {
+  y: 80,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power4.out",
+  scrollTrigger: {
+    trigger: ".beer-heading-section",
+    start: "top 80%"
+  }
+});
+
+
+const slider = document.querySelector('.grafton-swiper');
+const cursor = document.querySelector('.drag-cursor');
+
+if (slider && cursor) {
+  slider.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+    slider.style.cursor = 'none';
+  });
+
+  slider.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    slider.style.cursor = 'default';
+  });
+
+  slider.addEventListener('mousemove', (e) => {
+    gsap.to(cursor, {
+      x: e.clientX,
+      y: e.clientY,
+      duration: 0.15,
+      ease: 'power2.out'
+    });
+  });
+}
 
 
